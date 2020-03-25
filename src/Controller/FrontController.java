@@ -6,7 +6,7 @@ public class FrontController {
 
   private Dispatcher dispatcher;
 
-  public FrontController() throws IOException {
+  public FrontController(){
     dispatcher = new Dispatcher();
   }
 

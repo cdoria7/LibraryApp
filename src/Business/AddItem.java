@@ -7,6 +7,6 @@ public class AddItem implements BookshelfStrategy {
   @Override
   public void doSomething(List<Product> list, Product i) {
     list.add(i);
-    System.out.println("Ho aggiunto un libro:\t" + i.getName() + " - " + i.getAuthor() + "\n");
+    System.out.println("Ho aggiunto un prodotto:\t" + i.getName() + " - " + i.getAuthor() + " - Prezzo: " +i.getCost()+" €" + "\n");
   }
 }

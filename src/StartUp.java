@@ -1,4 +1,8 @@
 import Controller.FrontController;
+import Model.Book;
+import Model.FirtEditionDecorator;
+import Model.Product;
+import sun.jvm.hotspot.debugger.win32.coff.TestDebugInfo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,11 +20,7 @@ public class StartUp {
       frontController.dispatchRequest(command);
     }
 
-  /*
-    String title = reader.readLine();
-    String author = reader.readLine();
-    System.out.println("title: " +title+ "\nAuthor: " + author);
 
-   */
+
   }
 }
