@@ -7,38 +7,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Book implements Product {
+public class Vynil implements Product {
 
   private String id;
   private String author;
   private String title;
-  private double price;
   private List<String> optional = new ArrayList<>();
+
+  private int rpm;
+  private double price;
+
 
   /**
    * Constructors
    */
-  public Book() {
+  public Vynil() {
   }
 
-  public Book(String author, String title, double price, List<String> optional) {
+  public Vynil(String title, String author,  int rpm, double price, List<String> optional) {
     this.id = generateId();
     this.author = author;
     this.title = title;
-    this.price = price;
     this.optional = optional;
+    this.rpm = rpm;
+    this.price = price;
   }
 
-  /**
-   * Methods of Product Interface
-   */
   @Override
   public String show() {
     if(optional.isEmpty())
-      return  "Codice: " +id+ "\nTitolo: " +title+ "\nAutore: " +author+ "\nPrezzo: " + price;
+     return "Codice: "+ id + "\nTitolo: " +title+ "\nAutore: " +author+ "\nrpm: " +rpm+ "\nPrezzo: " + price;
     else
-      return  "Codice: " +id+ "\nTitolo: " +title+ "\nAutore: " +author+ "\nPrezzo: " + price + "\nOptional: " + optional.toString();
+      return   "Codice: "+ id + "\nTitolo: " +title+ "\nAutore: " +author+ "\nrpm: " +rpm+ "\nPrezzo: " + price + "\nOptional: " + optional.toString();
   }
+
 
   @Override
   public List<String> getOptional() {
@@ -48,6 +50,11 @@ public class Book implements Product {
   @Override
   public String getProductId() {
     return id;
+  }
+
+  @Override
+  public double getPrice() {
+    return price;
   }
 
   @Override
@@ -65,21 +72,12 @@ public class Book implements Product {
     System.out.println("Inserisci l'autore:");
     String author = reader.readLine();
 
+    System.out.println("Inserisci l'autore:");
+    int rpm = Integer.parseInt(reader.readLine());
+
     System.out.println("Inserisci il costo:");
     double cost = Double.parseDouble(reader.readLine());
 
-    return new Book(title, author, cost, new ArrayList<>());
+    return new Vynil(title, author, rpm, cost, new ArrayList<>());
   }
-
-  @Override
-  public double getPrice() {
-    return price;
-  }
-
-  public String getTitle(){
-    return title;
-  }
-
-
-
 }

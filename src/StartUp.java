@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class StartUp {
   public static void main(String[] args) throws IOException {
 
-    System.out.println("Usa i comandi:\n•\tshow\n•\tadd\n•\tremove");
+    System.out.println("Usa i comandi:\n•\tshow\n•\tadd book or add vynil\n•\tremove\n•\tupdate\n•\tquit");
     FrontController frontController = new FrontController();
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
