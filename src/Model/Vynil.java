@@ -1,5 +1,8 @@
 package Model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +24,7 @@ public class Vynil implements Product {
   public Vynil() {
   }
 
-  public Vynil(String author, String title, List<String> optional, int rpm, double price) {
+  public Vynil(String title, String author,  int rpm, double price, List<String> optional) {
     this.id = generateId();
     this.author = author;
     this.title = title;
@@ -33,9 +36,9 @@ public class Vynil implements Product {
   @Override
   public String show() {
     if(optional.isEmpty())
-     return "Codice: "+ id + "\nTitolo: " +title+ "\t\tAutore: " +author+ "\n\trpm: " +rpm+ "\nPrezzo: " + price;
+     return "Codice: "+ id + "\nTitolo: " +title+ "\nAutore: " +author+ "\nrpm: " +rpm+ "\nPrezzo: " + price;
     else
-      return   "Codice: "+ id + "\nTitolo: " +title+ "\nAutore: " +author+ "\n\trpm: " +rpm+ "\nPrezzo: " + price + "\nOptional: " + optional.toString();
+      return   "Codice: "+ id + "\nTitolo: " +title+ "\nAutore: " +author+ "\nrpm: " +rpm+ "\nPrezzo: " + price + "\nOptional: " + optional.toString();
   }
 
 
@@ -59,4 +62,22 @@ public class Vynil implements Product {
     return UUID.randomUUID().toString();
   }
 
+  @Override
+  public Product createProduct() throws IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+    System.out.println("Inserisci il titolo:");
+    String title = reader.readLine();
+
+    System.out.println("Inserisci l'autore:");
+    String author = reader.readLine();
+
+    System.out.println("Inserisci l'autore:");
+    int rpm = Integer.parseInt(reader.readLine());
+
+    System.out.println("Inserisci il costo:");
+    double cost = Double.parseDouble(reader.readLine());
+
+    return new Vynil(title, author, rpm, cost, new ArrayList<>());
+  }
 }

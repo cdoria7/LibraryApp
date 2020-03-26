@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface Product {
@@ -13,6 +14,8 @@ public interface Product {
   String getProductId();
 
   String generateId();
+
+  Product createProduct() throws IOException;
 
 
 }

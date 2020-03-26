@@ -43,20 +43,6 @@ public class Bookshelf {
     productStrategy.productCrud(shelf, i);
   }
 
-  public Product createProduct() throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    System.out.println("Inserisci il titolo:");
-    String title = reader.readLine();
-
-    System.out.println("Inserisci l'autore:");
-    String author = reader.readLine();
-
-    System.out.println("Inserisci il costo:");
-    double cost = Double.parseDouble(reader.readLine());
-
-    return new Book(title, author, cost, new ArrayList<>());
-  }
-
   public Product findProduct(List<Product> list) throws IOException {
 
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -72,6 +58,19 @@ public class Bookshelf {
         return p;
     }
     System.out.println("Non ho trovato nessun prodotto con questo id");
+    return null;
+  }
+
+  public Product createProduct(String type) throws IOException {
+    switch (type){
+      case "Book":
+        Book book = new Book();
+        return book.createProduct();
+
+      case "Vynil":
+        Vynil vynil = new Vynil();
+        return vynil.createProduct();
+    }
     return null;
   }
 }

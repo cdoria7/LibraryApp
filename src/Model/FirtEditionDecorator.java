@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.IOException;
 import java.util.List;
 
 public class FirtEditionDecorator extends ProductDecorator{
@@ -27,6 +28,11 @@ public class FirtEditionDecorator extends ProductDecorator{
   @Override
   public String generateId() {
     return tempProduct.getProductId();
+  }
+
+  @Override
+  public Product createProduct(){
+    return tempProduct;
   }
 
   @Override

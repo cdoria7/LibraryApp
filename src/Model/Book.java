@@ -1,5 +1,8 @@
 package Model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -53,6 +56,22 @@ public class Book implements Product {
   }
 
   @Override
+  public Product createProduct() throws IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+    System.out.println("Inserisci il titolo:");
+    String title = reader.readLine();
+
+    System.out.println("Inserisci l'autore:");
+    String author = reader.readLine();
+
+    System.out.println("Inserisci il costo:");
+    double cost = Double.parseDouble(reader.readLine());
+
+    return new Book(title, author, cost, new ArrayList<>());
+  }
+
+  @Override
   public double getPrice() {
     return price;
   }
@@ -60,5 +79,7 @@ public class Book implements Product {
   public String getTitle(){
     return title;
   }
+
+
 
 }

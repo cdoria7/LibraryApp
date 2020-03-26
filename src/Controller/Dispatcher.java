@@ -18,9 +18,14 @@ public class Dispatcher {
 
   public void dispatch(String command) throws IOException {
 
-    if(command.equalsIgnoreCase("add")) {
+    if(command.equalsIgnoreCase("add book")) {
       bookshelf.setProductStrategy(new AddProduct());
-      bookshelf.operation(bookshelf.getShelf(), bookshelf.createProduct());
+      bookshelf.operation(bookshelf.getShelf(), bookshelf.createProduct("Book"));
+    }
+
+    if(command.equalsIgnoreCase("add vynil")) {
+      bookshelf.setProductStrategy(new AddProduct());
+      bookshelf.operation(bookshelf.getShelf(), bookshelf.createProduct("Vynil"));
     }
 
     else if(command.equalsIgnoreCase("remove")){
