@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 public abstract class ProductDecorator implements Product{
 
   protected Product tempProduct;
@@ -9,17 +11,12 @@ public abstract class ProductDecorator implements Product{
   }
 
   @Override
-  public double getCost() {
-    return tempProduct.getCost();
+  public double getPrice() {
+    return tempProduct.getPrice();
   }
 
   @Override
-  public String getName() {
-    return tempProduct.getName();
-  }
-
-  @Override
-  public String getAuthor() {
-    return tempProduct.getAuthor();
+  public List<String> getOptional() {
+    return tempProduct.getOptional();
   }
 }

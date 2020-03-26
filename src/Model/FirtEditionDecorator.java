@@ -1,24 +1,36 @@
 package Model;
 
+import java.util.List;
+
 public class FirtEditionDecorator extends ProductDecorator{
 
   public FirtEditionDecorator(Product newProduct) {
     super(newProduct);
-    System.out.println("Applico la prima edizione");
+    getOptional().add("1° Edizione");
   }
 
   @Override
-  public String getAuthor() {
-    return tempProduct.getAuthor();
+  public String show() {
+    return tempProduct.show();
   }
 
   @Override
-  public String getName() {
-    return tempProduct.getName() + "[ 1°Ed ]";
+  public List<String> getOptional() {
+    return tempProduct.getOptional();
   }
 
   @Override
-  public double getCost() {
-    return tempProduct.getCost() + 15.50;
+  public String getProductId() {
+    return tempProduct.getProductId();
+  }
+
+  @Override
+  public String generateId() {
+    return tempProduct.getProductId();
+  }
+
+  @Override
+  public double getPrice() {
+    return tempProduct.getPrice() + 15.50;
   }
 }

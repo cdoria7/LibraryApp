@@ -1,24 +1,36 @@
 package Model;
 
+import java.util.List;
+
 public class AutographDecorator extends ProductDecorator {
 
   public AutographDecorator(Product newProduct) {
     super(newProduct);
-    System.out.println("Applico l'autografo");
+    getOptional().add("Autografato");
   }
 
   @Override
-  public String getAuthor() {
-    return tempProduct.getAuthor();
+  public String show() {
+    return null;
   }
 
   @Override
-  public String getName() {
-    return tempProduct.getName() + "[ Autograph ]";
+  public List<String> getOptional() {
+    return tempProduct.getOptional();
   }
 
   @Override
-  public double getCost() {
-    return tempProduct.getCost() + 5.00;
+  public String getProductId() {
+    return tempProduct.getProductId();
+  }
+
+  @Override
+  public String generateId() {
+    return tempProduct.getProductId();
+  }
+
+  @Override
+  public double getPrice() {
+    return tempProduct.getPrice() + 5.00;
   }
 }

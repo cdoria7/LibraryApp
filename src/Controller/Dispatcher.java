@@ -6,10 +6,11 @@ import Model.Bookshelf;
 import java.io.IOException;
 
 import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 public class Dispatcher {
   Bookshelf bookshelf;
-  ModProduct modProduct = new ModProduct();
+  UpdateProduct updateProduct = new UpdateProduct();
 
   public Dispatcher(){
     bookshelf= new Bookshelf();
@@ -18,21 +19,29 @@ public class Dispatcher {
   public void dispatch(String command) throws IOException {
 
     if(command.equalsIgnoreCase("add")) {
-      bookshelf.setBookshelfStrategy(new AddItem());
-      bookshelf.operation(bookshelf.getShelf(), modProduct.applyDecorator(bookshelf.createProduct()));
+      bookshelf.setProductStrategy(new AddProduct());
+      bookshelf.operation(bookshelf.getShelf(), bookshelf.createProduct());
     }
+
     else if(command.equalsIgnoreCase("remove")){
-      bookshelf.setBookshelfStrategy(new RemoveItem());
-      bookshelf.operation(bookshelf.getShelf(), bookshelf.findProduct());
+      bookshelf.setProductStrategy(new RemoveProduct());
+      bookshelf.operation(bookshelf.getShelf(), bookshelf.findProduct(bookshelf.getShelf()));
     }
+
     else if(command.equalsIgnoreCase("show")){
-      bookshelf.setBookshelfStrategy(new ShowItem());
+      bookshelf.setProductStrategy(new ShowProduct());
       bookshelf.operation(bookshelf.getShelf(), null);
+    }
+    else if(command.equalsIgnoreCase("update")){
+      bookshelf.setProductStrategy(new UpdateProduct());
+      bookshelf.operation(bookshelf.getShelf(), bookshelf.findProduct(bookshelf.getShelf()));
+    }
+    else if (command.equalsIgnoreCase("")){
     }
     else if(command.equalsIgnoreCase("quit")) {
       exit(0);
     }
-    else System.out.println("Comando non riconosciuto prova con:\n•\tshow\n•\tadd\n•\tremove");
+    else System.out.println("Comando non riconosciuto prova con:\n•\tshow\n•\tadd\n•\tremove\n•\tupdate\n•\tquit");
   }
 
 
